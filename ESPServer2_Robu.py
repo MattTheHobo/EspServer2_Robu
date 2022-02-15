@@ -1,3 +1,4 @@
+from re import T
 import network
 import socket
 import urequests
@@ -87,29 +88,32 @@ def main():
 
             if query[3] == 'stanza1' and query[5] == 'on' and luceAcc1 == False:
                 html = '<html><head><title> Stanza 1 </title></head> <body><h1> Home </h1> <p>La luce in stanza 1 è stata accesa</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
+                luceAcc1 = True
 
             if query[3] == 'stanza1' and query[5] == 'off' and luceAcc1 == True:
                 html = '<html><head><title> Stanza 1 </title></head> <body><h1> Home </h1> <p>La luce in stanza 1 è stata spenta</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>' 
+                luceAcc1 = False
 
             if query[3] == 'stanza1' and query[5] == 'off' and luceAcc1 == False:
                 html = '<html><head><title> Stanza 1 </title></head> <body><h1> Home </h1> <p>La luce in stanza 1 è già spenta</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>' 
 
 #*********************************************************************************************************************************************************************
 
-            if query[3] == 'stanza2' and query[5] == 'on' and luceAcc1 == True:
+            if query[3] == 'stanza2' and query[5] == 'on' and luceAcc2 == True:
                 html = '<html><head><title> Stanza 2 </title></head> <body><h1> Home </h1> <p>La luce in stanza 2 è già accesa</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
 
-            if query[3] == 'stanza2' and query[5] == 'on' and luceAcc1 == False:
+            if query[3] == 'stanza2' and query[5] == 'on' and luceAcc2 == False:
                 html = '<html><head><title> Stanza 2 </title></head> <body><h1> Home </h1> <p>La luce in stanza 2 è stata accesa</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
+                luceAcc2 = True
 
-            if query[3] == 'stanza2' and query[5] == 'off' and luceAcc1 == True:
-                html = '<html><head><title> Stanza 2 </title></head> <body><h1> Home </h1> <p>La luce in stanza 2 è stata spenta</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>' 
+            if query[3] == 'stanza2' and query[5] == 'off' and luceAcc2 == True:
+                html = '<html><head><title> Stanza 2 </title></head> <body><h1> Home </h1> <p>La luce in stanza 2 è stata spenta</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
+                luceAcc2 = False 
 
-            if query[3] == 'stanza2' and query[5] == 'off' and luceAcc1 == False:
+            if query[3] == 'stanza2' and query[5] == 'off' and luceAcc2 == False:
                 html = '<html><head><title> Stanza 2 </title></head> <body><h1> Home </h1> <p>La luce in stanza 2 è già spenta</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>' 
 
             
-
         html = html + '</body></html>' 
         #print(html)
         response = bytes(html, "utf-8")
