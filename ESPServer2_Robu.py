@@ -61,56 +61,56 @@ def main():
         while fine == False:
             line = clFile.readline().decode()
             #print(line)
-            #http://192.168.255.235/stanza1(stanza2,home)/luce/on(off)
+            #GET /stanza1(stanza2,home)/luce/on(off)
             #Ottengo la QueryString
-            line = line.split(' ')
-            if line[0] == 'GET':  
-                query = line[1].split('/')
+            if "GET" in line:
+                #line = line.split(' ')
+                query = line.split('/')
 
             if not line or line == '\r\n':
                 fine = True
 
         html = ''
 
-        if len(query) == 4:
+        if len(query) == 2:
 
-            if query[3] == 'home':
+            if query[1] == 'home':
                 html = '<html><head><title> HOME </title></head> <body><h1> Home </h1><a href="/stanza1">Stanza1</a> <br> <a href="/stanza2">Stanza2</a>'
-            elif query[3] == 'stanza1':
+            elif query[1] == 'stanza1':
                 html = '<html><head><title> Stanza 1 </title></head> <body><h1> Home </h1><a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
-            elif query[3] == 'stanza2':
+            elif query[1] == 'stanza2':
                 html = '<html><head><title> Stanza 2 </title></head> <body><h1> Home </h1><a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
         
-        if len(query) == 6:
+        if len(query) == 4:
 
-            if query[3] == 'stanza1' and query[5] == 'on' and luceAcc1 == True:
+            if query[1] == 'stanza1' and query[3] == 'on' and luceAcc1 == True:
                 html = '<html><head><title> Stanza 1 </title></head> <body><h1> Home </h1> <p>La luce in stanza 1 è già accesa</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
 
-            if query[3] == 'stanza1' and query[5] == 'on' and luceAcc1 == False:
+            if query[1] == 'stanza1' and query[3] == 'on' and luceAcc1 == False:
                 html = '<html><head><title> Stanza 1 </title></head> <body><h1> Home </h1> <p>La luce in stanza 1 è stata accesa</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
                 luceAcc1 = True
 
-            if query[3] == 'stanza1' and query[5] == 'off' and luceAcc1 == True:
+            if query[1] == 'stanza1' and query[3] == 'off' and luceAcc1 == True:
                 html = '<html><head><title> Stanza 1 </title></head> <body><h1> Home </h1> <p>La luce in stanza 1 è stata spenta</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>' 
                 luceAcc1 = False
 
-            if query[3] == 'stanza1' and query[5] == 'off' and luceAcc1 == False:
+            if query[1] == 'stanza1' and query[3] == 'off' and luceAcc1 == False:
                 html = '<html><head><title> Stanza 1 </title></head> <body><h1> Home </h1> <p>La luce in stanza 1 è già spenta</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>' 
 
 #*********************************************************************************************************************************************************************
 
-            if query[3] == 'stanza2' and query[5] == 'on' and luceAcc2 == True:
+            if query[1] == 'stanza2' and query[3] == 'on' and luceAcc2 == True:
                 html = '<html><head><title> Stanza 2 </title></head> <body><h1> Home </h1> <p>La luce in stanza 2 è già accesa</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
 
-            if query[3] == 'stanza2' and query[5] == 'on' and luceAcc2 == False:
+            if query[1] == 'stanza2' and query[3] == 'on' and luceAcc2 == False:
                 html = '<html><head><title> Stanza 2 </title></head> <body><h1> Home </h1> <p>La luce in stanza 2 è stata accesa</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
                 luceAcc2 = True
 
-            if query[3] == 'stanza2' and query[5] == 'off' and luceAcc2 == True:
+            if query[1] == 'stanza2' and query[3] == 'off' and luceAcc2 == True:
                 html = '<html><head><title> Stanza 2 </title></head> <body><h1> Home </h1> <p>La luce in stanza 2 è stata spenta</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>'
                 luceAcc2 = False 
 
-            if query[3] == 'stanza2' and query[5] == 'off' and luceAcc2 == False:
+            if query[1] == 'stanza2' and query[3] == 'off' and luceAcc2 == False:
                 html = '<html><head><title> Stanza 2 </title></head> <body><h1> Home </h1> <p>La luce in stanza 2 è già spenta</p> <a href="/luce/on">Accendi Luce</a> <br> <a href="/luce/off">Spegni Luce</a>' 
 
             
